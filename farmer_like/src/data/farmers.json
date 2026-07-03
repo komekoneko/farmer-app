@@ -1,0 +1,17 @@
+[  
+    {
+        "id": "Tanaka",
+        "name": "田中正彦",
+        "farmName": "田中農園",
+        "location": "東京都八王子市",
+        "headerImage": "/images/header.jpg",
+        "profileImage": "/images/profile.jpg",
+        "comment": "有機栽培にこだわり、農薬を使わない安全な野菜づくりをしています。家族みんなに安心して食べてもらえる野菜を届けたいです。",
+        "salesLocations": [
+            { "name": "イオンスーパー八王子店", "days": "出品日: 毎週水曜、土曜、日曜", "mapUrl": "https://maps.google.com" },
+            { "name": "八王子市場", "days": "出品日: 毎週土曜", "mapUrl": "https://maps.google.com" },
+            { "name": "マルエツ多摩店", "days": "出品日: 毎日", "mapUrl": "https://maps.google.com" }
+        ],
+        "vegetables": ["トマト","きゅうり","なす"]
+    }
+]
