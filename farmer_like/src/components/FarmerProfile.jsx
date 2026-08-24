@@ -23,14 +23,40 @@ function FarmerProfile() {
 
   return (
     <div className="profile">
-      <img src={farmer.headerImage} />
+      <img className="header-image" src={farmer.headerImage} />
 
-      <div>
-        <p>{farmer.name}</p>
-        <h1>{farmer.farmName}</h1>
-        <p>{farmer.location}</p>
+      <div className="profile-header">
+        <img className="profile-image" src={farmer.profileImage} alt={farmer.name} />
+        <div className="profile-names">
+          <p className="farmer-name">{farmer.name}</p>
+          <h1 className="farm-name">{farmer.farmName}</h1>
+          <p className="location">📍 {farmer.location}</p>
+        </div>
       </div>
 
+      <div className="comment">{farmer.comment}</div>
+
+      <h2 className="section-title">🛒 販売場所</h2>
+      {farmer.salesLocations.map((loc, index) => (
+        <div className="location-card" key={index}>
+          <span className="location-name">{loc.name}</span>
+          <div className="location-info">
+            <span className="location-hours">{loc.hours}</span>
+            <a className="map-link" href={loc.mapUrl} target="_blank" rel="noreferrer">📍 GoogleMap</a>
+          </div>
+        </div>
+      ))}
+
+    <h2 className="section-title">🥕 主な取り扱い野菜</h2>
+    <div className="vegetables">
+      {farmer.vegetables.map((veg, index) => (
+        <span className="veg-tag" key={index}>
+          {veg}{vegetableEmojis[veg] || "🌱"}
+        </span>
+      ))}
+    </div>
+
+    <button className="other-farmers-button">他の農家も見る</button>
     </div>
   );
 }
