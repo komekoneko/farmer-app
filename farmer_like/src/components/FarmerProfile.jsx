@@ -1,4 +1,5 @@
 import farmers from "../data/farmers.json";
+import "./FarmerProfile.css";
 
 const vegetableEmojis = {
   トマト: "🍅",
