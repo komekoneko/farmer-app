@@ -42,7 +42,7 @@ function FarmerProfile() {
         <div className="location-card" key={index}>
           <span className="location-name">{loc.name}</span>
           <div className="location-info">
-            <span className="location-hours">{loc.hours}</span>
+            <span className="location-days">{loc.days}</span>
             <a className="map-link" href={loc.mapUrl} target="_blank" rel="noreferrer">📍 GoogleMap</a>
           </div>
         </div>
