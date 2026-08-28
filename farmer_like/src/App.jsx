@@ -1,12 +1,12 @@
-import { useState } from 'react'
 import './App.css'
 import FarmerProfile from './components/FarmerProfile'
+import FarmerList from './components/FarmerList';
 
 function App() {
 
   return (
     <>
-      <FarmerProfile />
+      <FarmerList />
     </>
   )
 }
