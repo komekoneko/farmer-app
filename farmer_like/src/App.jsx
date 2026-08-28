@@ -1,13 +1,16 @@
-import './App.css'
+import { BrowserRouter, Routes, Route} from "react-router-dom"
 import FarmerProfile from './components/FarmerProfile'
 import FarmerList from './components/FarmerList';
 
 function App() {
 
   return (
-    <>
-      <FarmerList />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<FarmerList />} />
+        <Route path="/farmer/:id" element={<FarmerProfile />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
