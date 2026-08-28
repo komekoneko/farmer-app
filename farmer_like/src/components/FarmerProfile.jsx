@@ -1,5 +1,5 @@
 import farmers from "../data/farmers.json";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./FarmerProfile.css";
 
 const vegetableEmojis = {
@@ -59,7 +59,7 @@ function FarmerProfile() {
       ))}
     </div>
 
-    <button className="other-farmers-button">他の農家も見る</button>
+    <Link to="/" className="other-farmers-button">他の農家も見る</Link>
     </div>
   );
 }
