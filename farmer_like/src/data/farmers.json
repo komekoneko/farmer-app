@@ -13,5 +13,33 @@
             { "name": "マルエツ多摩店", "days": "出品日: 毎日", "mapUrl": "https://maps.google.com" }
         ],
         "vegetables": ["トマト","きゅうり","なす"]
+    },
+        {
+        "id": "corne",
+        "name": "Corne Sho",
+        "farmName": "Corne農園",
+        "location": "東京都多摩市",
+        "headerImage": "/images/header.jpg",
+        "profileImage": "/images/profile.jpg",
+        "comment": "太陽をたっぷり浴びた野菜を育てています。畑に来たときの気持ちを、そのまま食卓に届けたいです。",
+        "salesLocations": [
+            { "name": "多摩センター直売所", "days": "出品日: 毎週金曜、土曜", "mapUrl": "https://maps.google.com" },
+            { "name": "永山ファーマーズマーケット", "days": "出品日: 第2日曜", "mapUrl": "https://maps.google.com" }
+        ],
+        "vegetables": ["とうもろこし","じゃがいも","玉ねぎ"]
+    },
+    {
+        "id": "sakamoto",
+        "name": "坂本 香澄",
+        "farmName": "坂本農園",
+        "location": "東京都町田市",
+        "headerImage": "/images/header.jpg",
+        "profileImage": "/images/profile.jpg",
+        "comment": "母から受け継いだ畑を守っています。昔ながらの味を大切に、ていねいに育てた野菜をお届けします。",
+        "salesLocations": [
+            { "name": "町田駅前マルシェ", "days": "出品日: 毎週日曜", "mapUrl": "https://maps.google.com" },
+            { "name": "JA町田直売所", "days": "出品日: 火曜、木曜", "mapUrl": "https://maps.google.com" }
+        ],
+        "vegetables": ["レタス","キャベツ","かぼちゃ"]
     }
 ]
