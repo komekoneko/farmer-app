@@ -1,4 +1,5 @@
 import farmers from "../data/farmers.json";
+import { useParams } from "react-router-dom";
 import "./FarmerProfile.css";
 
 const vegetableEmojis = {
@@ -20,7 +21,8 @@ const vegetableEmojis = {
 };
 
 function FarmerProfile() {
-  const farmer = farmers[0];
+  const { id } = useParams();
+  const farmer = farmers.find((f) => f.id === id);
 
   return (
     <div className="profile">
