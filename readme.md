@@ -1,1 +1,1 @@
-Ver1.0 demo→ farmer-app-ruddy.vercel.app
+Ver1.0 demo→ (https://farmer-app-ruddy.vercel.app)
