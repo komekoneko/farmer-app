@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"
 import farmers from "../data/farmers.json";
 import "./FarmerEdit.css";
 
@@ -12,6 +13,7 @@ function FarmerEdit() {
 
     return(
         <div className="edit">
+            <Link to="/farmer/Tanaka" className="edit-back">← 戻る</Link>
             <h1 className="edit-title">プロフィール編集</h1>
 
             <label className="edit-label">農園名</label>
@@ -44,7 +46,7 @@ function FarmerEdit() {
             onChange={(e) => setComment(e.target.value)}
             />
 
-            <button className="edit-save-button">保存</button>
+            <Link to="/farmer/Tanaka" className="edit-save-button">保存</Link>
         </div>
     )
 }
