@@ -60,7 +60,7 @@ function FarmerProfile() {
     </div>
 
     <Link to="/" className="other-farmers-button">他の農家も見る</Link>
-    <Link to="/edit" className="edit-link-button">編集する</Link>
+    <Link to={`/edit/${id}`} className="edit-link-button">編集する</Link>
     </div>
   );
 }
