@@ -1,6 +1,7 @@
 import farmers from "../data/farmers.json";
 import { useParams, Link } from "react-router-dom";
 import "./FarmerProfile.css";
+import { useState } from "react";
 
 const vegetableEmojis = {
   トマト: "🍅",
@@ -23,13 +24,18 @@ const vegetableEmojis = {
 function FarmerProfile() {
   const { id } = useParams();
   const farmer = farmers.find((f) => f.id === id);
+  const [selectedVeg, setSelectedVeg] = useState("");
 
   return (
     <div className="profile">
       <img className="header-image" src={farmer.headerImage} />
 
       <div className="profile-header">
-        <img className="profile-image" src={farmer.profileImage} alt={farmer.name} />
+        <img
+          className="profile-image"
+          src={farmer.profileImage}
+          alt={farmer.name}
+        />
         <div className="profile-names">
           <p className="farmer-name">{farmer.name}</p>
           <h1 className="farm-name">{farmer.farmName}</h1>
@@ -45,22 +51,41 @@ function FarmerProfile() {
           <span className="location-name">{loc.name}</span>
           <div className="location-info">
             <span className="location-days">{loc.days}</span>
-            <a className="map-link" href={loc.mapUrl} target="_blank" rel="noreferrer">📍 GoogleMap</a>
+            <a
+              className="map-link"
+              href={loc.mapUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              📍 GoogleMap
+            </a>
           </div>
         </div>
       ))}
 
-    <h2 className="section-title">🥕 主な取り扱い野菜</h2>
-    <div className="vegetables">
-      {farmer.vegetables.map((veg, index) => (
-        <span className="veg-tag" key={index}>
-          {veg}{vegetableEmojis[veg] || "🌱"}
-        </span>
-      ))}
-    </div>
+      <h2 className="section-title">🥕 主な取り扱い野菜</h2>
+      <div className="vegetables">
+        {farmer.vegetables.map((veg, index) => (
+          <span
+            className={
+              selectedVeg === veg ? "veg-tag veg-tag-selected" : "veg-tag"
+            }
+            key={index}
+            onClick={() => setSelectedVeg(veg)}
+          >
+            {veg}
+            {vegetableEmojis[veg] || "🌱"}
+          </span>
+        ))}
+      </div>
+      <p>選択中: {selectedVeg}</p>
 
-    <Link to="/" className="other-farmers-button">他の農家も見る</Link>
-    <Link to={`/edit/${id}`} className="edit-link-button">編集する</Link>
+      <Link to="/" className="other-farmers-button">
+        他の農家も見る
+      </Link>
+      <Link to={`/edit/${id}`} className="edit-link-button">
+        編集する
+      </Link>
     </div>
   );
 }

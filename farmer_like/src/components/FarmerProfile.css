@@ -149,3 +149,12 @@
   text-align: center;
   box-sizing: border-box;
 }
+
+.veg-tag {
+  cursor: pointer;
+}
+
+.veg-tag-selected {
+  background-color: #4a7c59;
+  color: #ffffff;
+}
