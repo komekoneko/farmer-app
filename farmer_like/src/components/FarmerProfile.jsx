@@ -21,10 +21,30 @@ const vegetableEmojis = {
   かぼちゃ: "🎃",
 };
 
+const vegetableRecipes = {
+  トマト: ["トマトとモッツァレラのカプレーゼ", "トマトの冷製パスタ"],
+  きゅうり: ["きゅうりの浅漬け", "たたききゅうり"],
+  なす: ["焼きなす", "麻婆なす"],
+  とうもろこし: ["焼きとうもろこし", "コーンバター"],
+  じゃがいも: ["ポテトサラダ", "肉じゃが"],
+  玉ねぎ: ["オニオンスープ", "玉ねぎの丸焼き"],
+  レタス: ["レタスチャーハン", "シーザーサラダ"],
+  キャベツ: ["回鍋肉", "キャベツの浅漬け"],
+  かぼちゃ: ["かぼちゃの煮物", "かぼちゃサラダ"],
+};
+
 function FarmerProfile() {
   const { id } = useParams();
   const farmer = farmers.find((f) => f.id === id);
   const [selectedVeg, setSelectedVeg] = useState("");
+  const [recipes, setRecipes] = useState([]);
+
+  const handleSuggest = () => {
+    if (selectedVeg === "") {
+      return;
+    }
+    setRecipes(vegetableRecipes[selectedVeg] || []);
+  };
 
   return (
     <div className="profile">
@@ -79,6 +99,16 @@ function FarmerProfile() {
         ))}
       </div>
       <p>選択中: {selectedVeg}</p>
+
+      <button className="suggest-button" onClick={handleSuggest}>料理を提案</button>
+
+      {recipes.length > 0 && (
+        <ul className="recipe-list">
+          {recipes.map((recipe,index) => (
+            <li key={index}>{recipe}</li>
+          ))}
+        </ul>
+      )}
 
       <Link to="/" className="other-farmers-button">
         他の農家も見る
