@@ -98,7 +98,6 @@ function FarmerProfile() {
           </span>
         ))}
       </div>
-      <p>選択中: {selectedVeg}</p>
 
       <button className="suggest-button" onClick={handleSuggest}>料理を提案</button>
 
