@@ -122,20 +122,33 @@ function FarmerProfile() {
       <h2 className="section-title">🥕 主な取り扱い野菜</h2>
       <div className="vegetables">
         {farmer.vegetables.map((veg, index) => (
-          <span
-            className={
-              selectedVeg === veg ? "veg-tag veg-tag-selected" : "veg-tag"
-            }
-            key={index}
-            onClick={() => setSelectedVeg(veg)}
-          >
+          <span className="veg-tag" key={index}>
             {veg}
             {vegetableEmojis[veg] || "🌱"}
           </span>
         ))}
       </div>
+
       <div className="recipe-box">
-        <h2 className="recipe-box-title">🏠 家にある野菜</h2>
+        <h2 className="recipe-box-title">🍳 野菜を選んで料理を提案</h2>
+
+        <p className="step-label">① この農家の野菜から選ぶ</p>
+        <div className="vegetables">
+          {farmer.vegetables.map((veg, index) => (
+            <span
+              className={
+                selectedVeg === veg ? "veg-tag veg-tag-selected" : "veg-tag"
+              }
+              key={index}
+              onClick={() => setSelectedVeg(veg)}
+            >
+              {veg}
+              {vegetableEmojis[veg] || "🌱"}
+            </span>
+          ))}
+        </div>
+
+        <p className="step-label">② 家にある野菜を足す</p>
         <select
           className="home-veg-select"
           value=""
