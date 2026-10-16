@@ -122,7 +122,7 @@ function FarmerProfile() {
       <h2 className="section-title">🥕 主な取り扱い野菜</h2>
       <div className="vegetables">
         {farmer.vegetables.map((veg, index) => (
-          <span className="veg-tag" key={index}>
+          <span className="veg-tag info-tag" key={index}>
             {veg}
             {vegetableEmojis[veg] || "🌱"}
           </span>

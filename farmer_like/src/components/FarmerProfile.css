@@ -229,4 +229,19 @@
   font-weight: bold;
   color: #4a7c59;
   margin: 16px 16px 8px 16px;
+} 
+ 
+.info-tag {
+  background-color: #eeeeee;
+  color: #666666;
+  cursor: default;
+}
+
+.recipe-box .veg-tag {
+  background-color: #ffffff;
+}
+
+.recipe-box .veg-tag-selected {
+  background-color: #4a7c59;
+  color: #ffffff;
 }
