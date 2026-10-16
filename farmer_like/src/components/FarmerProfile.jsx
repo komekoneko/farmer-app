@@ -33,17 +33,49 @@ const vegetableRecipes = {
   かぼちゃ: ["かぼちゃの煮物", "かぼちゃサラダ"],
 };
 
+const comboRecipes = {
+  "トマト,なす": ["ラタトゥイユ", "夏野菜カレー"],
+  "トマト,きゅうり": ["ガスパチョ", "夏野菜サラダ"],
+  "きゅうり,キャベツ": ["コールスロー", "浅漬けミックス"],
+  "じゃがいも,玉ねぎ": ["肉じゃが", "ポテトスープ"],
+  "トマト,じゃがいも,玉ねぎ": ["ミネストローネ", "野菜ゴロゴロカレー"],
+};
+
 function FarmerProfile() {
   const { id } = useParams();
   const farmer = farmers.find((f) => f.id === id);
   const [selectedVeg, setSelectedVeg] = useState("");
   const [recipes, setRecipes] = useState([]);
+  const [homeVegs, setHomeVegs] = useState([]);
 
   const handleSuggest = () => {
     if (selectedVeg === "") {
       return;
     }
-    setRecipes(vegetableRecipes[selectedVeg] || []);
+    const allVegs = [selectedVeg, ...homeVegs];
+    const comboKey = [...allVegs].sort().join(',')
+    
+    const matchedKey = Object.keys(comboRecipes).find( 
+      (key) => key.split(',').sort().join(",") === comboKey
+    );
+
+    if(matchedKey) {
+      setRecipes(comboRecipes[matchedKey]);
+      return;
+    }
+
+    const eachRecipes = allVegs.flatMap((veg => vegetableRecipes[veg] || []));
+    setRecipes(eachRecipes);
+  };
+
+  const handleAddhomeVeg = (veg) => {
+    if (veg === "") {
+      return;
+    }
+    if (homeVegs.includes(veg)) {
+      return;
+    }
+    setHomeVegs([...homeVegs, veg]);
   };
 
   return (
@@ -99,11 +131,35 @@ function FarmerProfile() {
         ))}
       </div>
 
-      <button className="suggest-button" onClick={handleSuggest}>料理を提案</button>
+      <h2 className="section-title">🏠 家にある野菜</h2>
+      <select
+        className="home-veg-select"
+        value=""
+        onChange={(e) => handleAddhomeVeg(e.target.value)}
+      >
+        <option value="">野菜を選んで追加</option>
+        {Object.keys(vegetableRecipes).map((veg, index) => (
+          <option value={veg} key={index}>
+            {veg}
+          </option>
+        ))}
+      </select>
+
+      <div className="home-vegetables">
+        {homeVegs.map((veg,index) => (
+            <span className="veg-tag veg-tag-selected" key={index}>
+              {veg}{vegetableEmojis[veg] || '🌱'}
+            </span>
+        ))}
+      </div>
+
+      <button className="suggest-button" onClick={handleSuggest}>
+        料理を提案
+      </button>
 
       {recipes.length > 0 && (
         <ul className="recipe-list">
-          {recipes.map((recipe,index) => (
+          {recipes.map((recipe, index) => (
             <li key={index}>{recipe}</li>
           ))}
         </ul>
