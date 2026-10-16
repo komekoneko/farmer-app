@@ -53,18 +53,18 @@ function FarmerProfile() {
       return;
     }
     const allVegs = [selectedVeg, ...homeVegs];
-    const comboKey = [...allVegs].sort().join(',')
-    
-    const matchedKey = Object.keys(comboRecipes).find( 
-      (key) => key.split(',').sort().join(",") === comboKey
+    const comboKey = [...allVegs].sort().join(",");
+
+    const matchedKey = Object.keys(comboRecipes).find(
+      (key) => key.split(",").sort().join(",") === comboKey,
     );
 
-    if(matchedKey) {
+    if (matchedKey) {
       setRecipes(comboRecipes[matchedKey]);
       return;
     }
 
-    const eachRecipes = allVegs.flatMap((veg => vegetableRecipes[veg] || []));
+    const eachRecipes = allVegs.flatMap((veg) => vegetableRecipes[veg] || []);
     setRecipes(eachRecipes);
   };
 
@@ -76,6 +76,10 @@ function FarmerProfile() {
       return;
     }
     setHomeVegs([...homeVegs, veg]);
+  };
+
+  const handleRemoveHomeVeg = (veg) => {
+    setHomeVegs(homeVegs.filter((v) => v !== veg));
   };
 
   return (
@@ -146,10 +150,15 @@ function FarmerProfile() {
       </select>
 
       <div className="home-vegetables">
-        {homeVegs.map((veg,index) => (
-            <span className="veg-tag veg-tag-selected" key={index}>
-              {veg}{vegetableEmojis[veg] || '🌱'}
-            </span>
+        {homeVegs.map((veg, index) => (
+          <span
+            className="veg-tag veg-tag-selected"
+            key={index}
+            onClick={() => handleRemoveHomeVeg(veg)}
+          >
+            {veg}
+            {vegetableEmojis[veg] || "🌱"}
+          </span>
         ))}
       </div>
 
