@@ -134,45 +134,46 @@ function FarmerProfile() {
           </span>
         ))}
       </div>
-
-      <h2 className="section-title">🏠 家にある野菜</h2>
-      <select
-        className="home-veg-select"
-        value=""
-        onChange={(e) => handleAddhomeVeg(e.target.value)}
-      >
-        <option value="">野菜を選んで追加</option>
-        {Object.keys(vegetableRecipes).map((veg, index) => (
-          <option value={veg} key={index}>
-            {veg}
-          </option>
-        ))}
-      </select>
-
-      <div className="home-vegetables">
-        {homeVegs.map((veg, index) => (
-          <span
-            className="veg-tag veg-tag-selected"
-            key={index}
-            onClick={() => handleRemoveHomeVeg(veg)}
-          >
-            {veg}
-            {vegetableEmojis[veg] || "🌱"}
-          </span>
-        ))}
-      </div>
-
-      <button className="suggest-button" onClick={handleSuggest}>
-        料理を提案
-      </button>
-
-      {recipes.length > 0 && (
-        <ul className="recipe-list">
-          {recipes.map((recipe, index) => (
-            <li key={index}>{recipe}</li>
+      <div className="recipe-box">
+        <h2 className="recipe-box-title">🏠 家にある野菜</h2>
+        <select
+          className="home-veg-select"
+          value=""
+          onChange={(e) => handleAddhomeVeg(e.target.value)}
+        >
+          <option value="">野菜を選んで追加</option>
+          {Object.keys(vegetableRecipes).map((veg, index) => (
+            <option value={veg} key={index}>
+              {veg}
+            </option>
           ))}
-        </ul>
-      )}
+        </select>
+
+        <div className="home-vegetables">
+          {homeVegs.map((veg, index) => (
+            <span
+              className="veg-tag veg-tag-selected"
+              key={index}
+              onClick={() => handleRemoveHomeVeg(veg)}
+            >
+              {veg}
+              {vegetableEmojis[veg] || "🌱"}
+            </span>
+          ))}
+        </div>
+
+        <button className="suggest-button" onClick={handleSuggest}>
+          料理を提案
+        </button>
+
+        {recipes.length > 0 && (
+          <ul className="recipe-list">
+            {recipes.map((recipe, index) => (
+              <li key={index}>{recipe}</li>
+            ))}
+          </ul>
+        )}
+      </div>
 
       <Link to="/" className="other-farmers-button">
         他の農家も見る
