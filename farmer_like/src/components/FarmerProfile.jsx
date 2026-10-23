@@ -1,5 +1,5 @@
 import farmers from "../data/farmers.json";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
 import "./FarmerProfile.css";
 import { useState } from "react";
 

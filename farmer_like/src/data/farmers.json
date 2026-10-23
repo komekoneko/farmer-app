@@ -46,7 +46,7 @@
         "mapUrl": "https://maps.google.com"
       }
     ],
-    "vegetables": ["とうもろこし", "じゃがいも", "玉ねぎ"]
+    "vegetables": ["トマト","とうもろこし", "じゃがいも", "玉ねぎ"]
   },
   {
     "id": "sakamoto",
@@ -68,6 +68,6 @@
         "mapUrl": "https://maps.google.com"
       }
     ],
-    "vegetables": ["レタス", "キャベツ", "かぼちゃ"]
+    "vegetables": ["トマト","レタス", "キャベツ", "かぼちゃ"]
   }
 ]
