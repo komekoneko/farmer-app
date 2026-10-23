@@ -1,7 +1,7 @@
 import farmers from "../data/farmers.json";
 import { useParams, Link, useSearchParams } from "react-router-dom";
 import "./FarmerProfile.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const vegetableEmojis = {
   トマト: "🍅",
@@ -43,10 +43,26 @@ const comboRecipes = {
 
 function FarmerProfile() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const boughtVeg = searchParams.get("veg");
   const farmer = farmers.find((f) => f.id === id);
   const [selectedVeg, setSelectedVeg] = useState("");
   const [recipes, setRecipes] = useState([]);
-  const [homeVegs, setHomeVegs] = useState([]);
+  const [homeVegs, setHomeVegs] = useState([])
+  const [stampedFarmers, setStampedFarmers] = useState([]);
+
+  useEffect(() => {
+    if (!boughtVeg) {
+      return;
+    }
+    const key = `stamp_${boughtVeg}`;
+    const saved = JSON.parse(localStorage.getItem(key)) || [];
+    if(!saved.includes(id)) {
+      saved.push(id);
+      localStorage.setItem(key, JSON.stringify(saved));
+    }
+    setStampedFarmers(saved);
+  }, [id, boughtVeg]);
 
   const handleSuggest = () => {
     if (selectedVeg === "") {
@@ -85,6 +101,7 @@ function FarmerProfile() {
   return (
     <div className="profile">
       <img className="header-image" src={farmer.headerImage} />
+      <p>集めたトマト：{stampedFarmers.length}</p>
 
       <div className="profile-header">
         <img
