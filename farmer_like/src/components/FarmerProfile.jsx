@@ -128,14 +128,16 @@ function FarmerProfile() {
               key={f.id}
             >
               <span className="stamp-icon">
-                {stampedFarmers.includes(f.id) ? '🍅' : '?'}
+                {stampedFarmers.includes(f.id) ? "🍅" : "?"}
               </span>
               <span className="stamp-farm">{f.farmName}</span>
             </div>
           ))}
         </div>
         {stampedFarmers.length === rallyFarmers.length && (
-          <p className="stamp-complete">コンプリート！好きなトマトを一つ無料でプレゼント🎉</p>
+          <p className="stamp-complete">
+            コンプリート！好きなトマトを一つ無料でプレゼント🎉
+          </p>
         )}
       </div>
 
@@ -220,7 +222,16 @@ function FarmerProfile() {
         {recipes.length > 0 && (
           <ul className="recipe-list">
             {recipes.map((recipe, index) => (
-              <li key={index}>{recipe}</li>
+              <li key={index}>
+                <a
+                  className="recipe-link"
+                  href={`https://cookpad.com/jp/search/${recipe}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {recipe} →
+                </a>
+              </li>
             ))}
           </ul>
         )}

@@ -190,6 +190,13 @@
   color: #333333;
 }
 
+.recipe-link {
+  display: block;
+  text-decoration: none;
+  color: #333333;
+  outline: none;
+}
+
 .home-veg-select {
   display: block;
   width: calc(100% - 32px);
