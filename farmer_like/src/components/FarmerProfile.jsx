@@ -48,16 +48,16 @@ function FarmerProfile() {
   const farmer = farmers.find((f) => f.id === id);
   const [selectedVeg, setSelectedVeg] = useState("");
   const [recipes, setRecipes] = useState([]);
-  const [homeVegs, setHomeVegs] = useState([])
+  const [homeVegs, setHomeVegs] = useState([]);
   const [stampedFarmers, setStampedFarmers] = useState([]);
 
+  const rallyVeg = "トマト";
+  const rallyFarmers = farmers.filter((f) => f.vegetables.includes(rallyVeg));
+
   useEffect(() => {
-    if (!boughtVeg) {
-      return;
-    }
-    const key = `stamp_${boughtVeg}`;
+    const key = `stamp_${rallyVeg}`;
     const saved = JSON.parse(localStorage.getItem(key)) || [];
-    if(!saved.includes(id)) {
+    if (boughtVeg === rallyVeg && !saved.includes(id)) {
       saved.push(id);
       localStorage.setItem(key, JSON.stringify(saved));
     }
@@ -101,7 +101,6 @@ function FarmerProfile() {
   return (
     <div className="profile">
       <img className="header-image" src={farmer.headerImage} />
-      <p>集めたトマト：{stampedFarmers.length}</p>
 
       <div className="profile-header">
         <img
@@ -117,6 +116,28 @@ function FarmerProfile() {
       </div>
 
       <div className="comment">{farmer.comment}</div>
+
+      <div className="stamp-card">
+        <h2 className="stamp-title">🍅 トマトラリー</h2>
+        <div className="stamps">
+          {rallyFarmers.map((f) => (
+            <div
+              className={
+                stampedFarmers.includes(f.id) ? "stamp stamp-filled" : "stamp"
+              }
+              key={f.id}
+            >
+              <span className="stamp-icon">
+                {stampedFarmers.includes(f.id) ? '🍅' : '?'}
+              </span>
+              <span className="stamp-farm">{f.farmName}</span>
+            </div>
+          ))}
+        </div>
+        {stampedFarmers.length === rallyFarmers.length && (
+          <p className="stamp-complete">コンプリート！好きなトマトを一つ無料でプレゼント🎉</p>
+        )}
+      </div>
 
       <h2 className="section-title">🛒 販売場所</h2>
       {farmer.salesLocations.map((loc, index) => (
